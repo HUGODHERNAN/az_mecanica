@@ -1,0 +1,180 @@
+:root{
+  --bg: #0b0b0d;
+  --panel: #17171b;
+  --ink: #f5f5f5;
+  --muted: #b7b7c2;
+  --accent: #ffcc00;  /* amarillo */
+  --accent-ink: #000;
+  --card: #1f1f24;
+  --border: #2a2a30;
+  --shadow: 0 10px 24px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  color:var(--ink);
+  background:var(--bg);
+  font: 16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.container{
+  width:min(1200px, 92%);
+  margin-inline:auto;
+}
+
+/* ===== Header / Nav ===== */
+.topbar{
+  background:#0f0f12;
+  border-bottom:1px solid var(--border);
+  position:sticky; top:0; z-index:50;
+}
+.topbar__inner{
+  display:flex; align-items:center; gap:1rem;
+  padding: .75rem 0;
+}
+.brand__img{height:56px; width:auto; display:block}
+
+.phone-badge{
+  margin-left:auto;
+  background:var(--accent);
+  color:var(--accent-ink);
+  text-decoration:none;
+  font-weight:700;
+  padding:.5rem .8rem;
+  border-radius:.35rem;
+  box-shadow:var(--shadow);
+  white-space:nowrap;
+}
+
+.menu-btn{
+  display:none;
+  margin-left:.25rem;
+  background:transparent;
+  color:var(--ink);
+  border:1px solid var(--border);
+  border-radius:.5rem;
+  padding:.35rem .6rem;
+  cursor:pointer;
+}
+
+.nav{
+  background:#121216;
+  border-top:1px solid var(--border);
+}
+.nav__list{
+  display:flex; gap:.75rem; padding:.5rem 0;
+  flex-wrap:wrap;
+}
+.nav__link{
+  color:var(--ink);
+  text-decoration:none;
+  padding:.45rem .75rem;
+  border-radius:.35rem;
+}
+.nav__link:hover{background:#1a1a1f}
+.nav__link.is-active{
+  background:var(--accent);
+  color:var(--accent-ink);
+  font-weight:700;
+}
+
+/* ===== Galería ===== */
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:.8rem;
+  padding:1rem 0 1.25rem;
+}
+.gallery__img{
+  width:100%; height:220px; object-fit:cover; display:block;
+  border-radius:.35rem;
+  box-shadow:var(--shadow);
+}
+
+/* ===== Contenido ===== */
+.content__header{background:#101014; border-left:6px solid var(--accent)}
+.content__title{
+  margin:0; padding:.8rem 1rem; text-transform:uppercase; letter-spacing:.5px;
+}
+.content{padding-bottom:1rem}
+.content__grid{
+  display:grid; grid-template-columns: 1fr 280px; gap:1rem;
+  background:#141419; border:1px solid var(--border); border-radius:.4rem;
+  padding:1rem; box-shadow:var(--shadow);
+}
+.content__text{color:var(--muted)}
+.content__text p{margin:.6rem 0}
+
+.content__cta{
+  display:flex; align-items:flex-start; justify-content:flex-end;
+}
+.btn{
+  display:inline-block; text-decoration:none; cursor:pointer;
+  padding:.75rem 1rem; border-radius:.4rem; font-weight:700;
+}
+.btn--accent{background:var(--accent); color:var(--accent-ink)}
+.btn--accent:hover{filter:brightness(.95)}
+.btn--dark{background:#000; color:#fff}
+.btn--dark:hover{filter:brightness(1.15)}
+
+/* ===== Cards ===== */
+.cards{
+  display:grid; gap:1rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin:1.25rem 0;
+}
+.card{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:.5rem; padding:1rem;
+  box-shadow:var(--shadow);
+}
+.card__icon{font-size:1.3rem; margin-bottom:.3rem}
+.card__title{
+  margin:.2rem 0 .5rem; font-size:1rem; text-transform:uppercase;
+  color:#ffe073;
+}
+.card__text{color:var(--muted); font-size:.98rem}
+
+/* Cinta CTA inferior */
+.cta-strip{
+  margin:1.5rem 0 0;
+  display:flex; gap:1rem; align-items:center; justify-content:space-between;
+  background:var(--accent); color:var(--accent-ink);
+  padding:.9rem 1rem; border-radius:.35rem; font-weight:700;
+}
+
+/* ===== Footer ===== */
+.footer{
+  border-top:1px solid var(--border);
+  margin-top:1.25rem;
+  background:#0f0f12;
+}
+.footer__inner{padding:1rem 0; color:var(--muted); font-size:.9rem}
+
+/* WhatsApp FAB */
+.wa-fab{
+  position:fixed; right:18px; bottom:18px;
+  width:48px; height:48px; display:grid; place-items:center;
+  border-radius:50%; background:#25d366; color:#000; text-decoration:none;
+  box-shadow:var(--shadow); font-size:1.25rem;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 900px){
+  .gallery__img{height:180px}
+  .content__grid{grid-template-columns:1fr}
+  .content__cta{justify-content:flex-start}
+  .cards{grid-template-columns: repeat(2, 1fr)}
+  .menu-btn{display:inline-block}
+  .nav{display:none}
+  .nav.is-open{display:block}
+}
+
+@media (max-width: 640px){
+  .gallery{grid-template-columns:1fr}
+  .gallery__img{height:200px}
+  .cards{grid-template-columns:1fr}
+  .phone-badge{margin-left:auto; font-size:.95rem}
+}
