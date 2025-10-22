@@ -1,7 +1,7 @@
 <%-- 
     Document   : index.jsp
     Created on : 30 may. 2025
-    Author     : Hugo Hernan / Michel
+    Author     : Hugo Hernan / Jeff
     Description: Página principal con navegación dinámica (login) y estilo unificado.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -19,8 +19,9 @@
 <body>
 
 <%
-  // Mantener lógica de sesión para saludo/login
   String nombreUsuario = (String) session.getAttribute("nombreUsuario");
+  String rol = (String) session.getAttribute("rol");
+  boolean isAdmin = (rol != null) && "ADMIN".equalsIgnoreCase(rol.trim());
 %>
 
 <!-- ====== HEADER ====== -->
@@ -30,42 +31,46 @@
       <img src="${pageContext.request.contextPath}/imgs/logo.png" alt="Logo AZ" class="brand__img">
     </a>
 
-    <!-- Teléfono + User info a la derecha -->
     <a href="tel:+51973608798" class="phone-badge">Llámanos: 973 608 798</a>
 
-    <!-- User info (login/logout) -->
     <div class="user-info" style="display:flex; align-items:center; gap:.5rem; margin-left:.5rem;">
       <span style="color:#cfd1d6; font-size:.95rem;">
-        <%
-          if (nombreUsuario != null) {
-            out.print("Hola, " + nombreUsuario + "!");
-          } else {
-            out.print("Invitado");
-          }
-        %>
+        <%= (nombreUsuario != null) ? ("Hola, " + nombreUsuario + "!") : "Invitado" %>
       </span>
-      <%
-        if (nombreUsuario != null) {
-          out.print("<a href=\"LogoutServlet\" class=\"nav__link\" style=\"padding:.3rem .6rem;\">Salir</a>");
-        } else {
-          out.print("<a href=\"login.jsp\" class=\"nav__link\" style=\"padding:.3rem .6rem;\">Ingresar</a>");
-        }
-      %>
+      <%= (nombreUsuario != null)
+            ? "<a href=\"LogoutServlet\" class=\"nav__link\" style=\"padding:.3rem .6rem;\">Salir</a>"
+            : "<a href=\"login.jsp\" class=\"nav__link\" style=\"padding:.3rem .6rem;\">Ingresar</a>" %>
     </div>
 
     <button class="menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainnav">☰</button>
   </div>
 
+  <!-- NAV PÚBLICO (siempre) -->
   <nav id="mainnav" class="nav">
     <div class="container nav__list">
       <a href="${pageContext.request.contextPath}/index.jsp" class="nav__link is-active">Principal</a>
-      <a href="${pageContext.request.contextPath}/reparacion.jsp" class="nav__link">Reparacion</a>
+      <a href="${pageContext.request.contextPath}/reparacion.jsp" class="nav__link">Reparación</a>
       <a href="${pageContext.request.contextPath}/mantenimiento.jsp" class="nav__link">Mantenimiento</a>
       <a href="${pageContext.request.contextPath}/auxilio.jsp" class="nav__link">Auxilio</a>
-      <a href="${pageContext.request.contextPath}/localizacion.jsp" class="nav__link">Localizacion</a>
+      <a href="${pageContext.request.contextPath}/localizacion.jsp" class="nav__link">Localización</a>
     </div>
   </nav>
+
+  <!-- NAV ADMIN (solo si isAdmin = true) -->
+  <% if (isAdmin) { %>
+  <nav class="nav nav--admin">
+    <div class="container nav__list">
+      <span class="nav__link nav__label">Panel Admin</span>
+      <a href="${pageContext.request.contextPath}/clientes.jsp" class="nav__link">Clientes</a>
+      <a href="${pageContext.request.contextPath}/vehiculos.jsp" class="nav__link">Vehículos</a>
+      <a href="${pageContext.request.contextPath}/servicios.jsp" class="nav__link">Servicios</a>
+      <a href="${pageContext.request.contextPath}/citas.jsp" class="nav__link">Citas</a>
+      
+    </div>
+  </nav>
+<% } %>
 </header>
+
 
 <!-- ====== HERO: 2 imágenes ====== -->
 <section class="gallery container" style="grid-template-columns: repeat(2, 1fr);">
