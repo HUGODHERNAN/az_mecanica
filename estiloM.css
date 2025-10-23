@@ -353,3 +353,6 @@ input:disabled, select:disabled{
   opacity:.7; filter:saturate(.9);
   background:#15151c; color:#cfcfde; border-color:#2a2a30;
 }
+
+/* agregado con vehiculos */
+.money { letter-spacing:.5px }
