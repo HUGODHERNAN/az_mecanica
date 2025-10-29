@@ -37,10 +37,10 @@
   <a>Registro de Pagos</a>
   <a>Productos</a>
   <a>Inventario</a>
-  <a>OTs</a>
-  <a>Servicios</a>
+  <a href="citas.jsp">Citas</a>
+  <a href="servicios.jsp">Servicios</a>
   <a class="active">Clientes</a>
-  <a>Vehículos</a>
+  <a href="vehiculos.jsp">Vehículos</a>
 </nav>
 
 <main class="container">
