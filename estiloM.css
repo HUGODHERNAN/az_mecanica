@@ -356,3 +356,286 @@ input:disabled, select:disabled{
 
 /* agregado con vehiculos */
 .money { letter-spacing:.5px }
+
+
+/*CITAS Y SERVICIOS*/
+
+/* =======================
+   AZ MECÁNICA 
+   Páginas: Servicios / Citas
+   ======================= */
+
+/* UTILIDADES */
+.hidden { display: none !important; }
+.center { text-align: center; }
+.muted { opacity: .75; }
+.row { display: flex; gap: .75rem; }
+.between { justify-content: space-between; }
+.end { justify-content: flex-end; }
+.align-end { align-items: end; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+.gap { gap: 1rem; }
+.narrow { max-width: 900px; margin-inline: auto; }
+
+/* TOP NAV (si ya lo tienes, esto solo suaviza) */
+.topbar .tabs { display:flex; gap:1rem; align-items:center; }
+.topbar .tabs a.active { background: #f6c200; color:#111; border-radius: 6px; padding: .35rem .7rem; }
+
+/* BOTONES */
+.btn { padding: .55rem .9rem; border-radius: 10px; border: 1px solid #d9d9d9; background:#fff; cursor:pointer; }
+.btn:hover { filter: brightness(0.97); }
+.btn-primary { background:#f6c200; border-color:#f6c200; color:#111; font-weight:600; }
+.btn-danger { background:#e53935; border-color:#e53935; color:#fff; }
+.btn-danger-outline { background:#fff; color:#e53935; border-color:#e53935; }
+.btn-round { border-radius: 999px; }
+.link { color:#111; text-decoration:none; }
+.link:hover { text-decoration:underline; }
+
+/* CHIPS / FILTROS CABECERA */
+.toolbar { display:flex; justify-content:space-between; align-items:center; margin: 1rem 0; }
+.chip { background:#222; color:#eee; border:0; border-radius:999px; padding:.45rem .8rem; cursor:pointer; }
+.chip span { opacity:.75; margin-left:.25rem; }
+.chip.muted { background:transparent; color:#999; border:1px dashed #999; }
+
+/* TABLAS PLANAS */
+.table-wrapper { background:#2a2a2a; padding: .5rem; border-radius: 10px; }
+.table.flat { width:100%; border-collapse: collapse; }
+.table.flat thead th {
+  font-weight:600; text-align:left; padding:.75rem .8rem; background:#1f1f1f; color:#f5f5f5;
+  border-bottom: 3px solid #f6c200;
+}
+.table.flat tbody td { padding:.65rem .8rem; border-bottom:1px solid rgba(255,255,255,.08); color:#eaeaea; }
+.table.flat tbody tr:hover { background: rgba(255,255,255,.03); }
+
+/* ICON BUTTONS (acciones) */
+.icon-btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:32px; height:32px; border-radius:50%;
+  background:#333; color:#f5f5f5; border:1px solid #3f3f3f; cursor:pointer;
+}
+.icon-btn:hover { background:#3a3a3a; }
+.icon-btn.danger { background:#3b1b1b; border-color:#6b1b1b; }
+.icon-btn.danger:hover { background:#5a2323; }
+
+/* MODALES (Servicios) */
+.modal {
+  position: fixed; inset: 0; display:flex; align-items:center; justify-content:center;
+  background: rgba(0,0,0,.55); z-index: 50; padding: 1rem;
+}
+.modal-card {
+  width: min(900px, 96vw); background:#f5f5f5; color:#111;
+  border-radius: 12px; overflow:hidden; box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+.modal-card.small { width: min(520px, 96vw); }
+.modal-header { background:#ededed; padding: .9rem 1rem; border-bottom:1px solid #ddd; }
+.modal-header h3 { margin:0; font-weight:700; }
+.modal-footer { display:flex; justify-content:flex-end; gap:.6rem; padding: .9rem 1rem; border-top:1px solid #ddd; }
+.modal-footer.two { justify-content:space-between; }
+.field { display:flex; flex-direction:column; gap:.35rem; margin: .65rem 1rem; }
+.field > label { font-size:.9rem; color:#333; }
+.field > input, .field > select, .field > textarea {
+  padding:.55rem .6rem; border-radius:8px; border:1px solid #d7d7d7; background:#fff;
+}
+.field.search input { width:100%; border-radius: 12px; }
+
+/* Panel “Servicio Ofrecido” + filas */
+.panel { margin: .5rem 1rem 1rem; border:1px solid #ddd; border-radius:10px; background:#fff; }
+.panel-title { padding:.7rem 1rem; font-weight:600; background:#f2f2f2; border-bottom:1px solid #e6e6e6; }
+.list-selectable { padding:.5rem 1rem 1rem; display:flex; flex-direction:column; gap:.5rem; }
+.row-offer {
+  display:grid; grid-template-columns: 1fr 120px; gap:.7rem; align-items:center;
+  padding:.45rem .6rem; border:1px solid #e7e7e7; border-radius:8px; background:#fafafa;
+}
+.row-offer .offer-name { margin-left:.35rem; }
+.row-offer .inline { width: 100%; padding:.45rem .5rem; border:1px solid #d7d7d7; border-radius:8px; }
+.price-input, .row-offer input[type="number"] { text-align:right; }
+
+/* =========================
+   CALENDARIO (Citas)
+   ========================= */
+.grid-calendar { display:grid; grid-template-columns: 1.2fr .8fr; gap: 1.25rem; align-items:start; }
+.calendar-box { background:#fff; border-radius: 12px; padding: .8rem; box-shadow: 0 10px 30px rgba(0,0,0,.15); }
+.calendar-head .legend { margin-left:.8rem; color:#eaeaea; font-size:.95rem; }
+.dot { width:.6rem; height:.6rem; border-radius:50%; display:inline-block; margin-right:.35rem; vertical-align:middle; }
+.dot-green { background:#1bb55c; }
+.dot-yellow { background:#f6c200; }
+.dot-gray { background:#9aa1a7; }
+
+.table.calendar thead th { background:#fafafa; color:#333; border-bottom:1px solid #eee; }
+.table.calendar tbody td {
+  vertical-align: top; background:#fff; color:#333; height:115px; width:14.28%;
+  border:1px solid #eee; position:relative; padding:.35rem;
+}
+.table.calendar tbody td.is-other { background:#fafafa; color:#9aa1a7; }
+.day-num { font-weight:600; color:#555; }
+.cell-body { margin-top:.35rem; display:flex; flex-direction:column; gap:.35rem; }
+
+.event { cursor:pointer; }
+.event-badge {
+  display:inline-block; font-size:.85rem; line-height:1; padding:.35rem .5rem;
+  border-radius:6px; font-weight:700; color:#111;
+}
+.event-text { display:block; color:#333; margin-top:.15rem; }
+
+/* Estados (usa valores exactos del backend: PENDIENTE | CONFIRMADA | CANCELADA) */
+.badge, .event-badge { border:1px solid transparent; }
+.PENDIENTE { background:#f6c200; border-color:#e6b400; }
+.CONFIRMADA { background:#1bb55c; color:#fff; border-color:#159a4d; }
+.CANCELADA { background:#9aa1a7; color:#fff; border-color:#87909a; }
+
+/* PANEL LATERAL (Citas) */
+.sidepanel {
+  background:#fff; border-radius: 12px; min-height: 520px; box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  transform: translateX(8px); opacity: 0; transition: all .25s ease; pointer-events:none; padding: .5rem;
+}
+.sidepanel.open { transform: translateX(0); opacity:1; pointer-events:auto; }
+.panel-card { padding: .7rem; }
+.panel-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:.5rem; }
+.panel-header h3 { margin:0; font-weight:700; }
+.panel-card .btn { min-width: 120px; }
+
+/* ETIQUETAS DE CAMPO LECTURA (Detalle de cita) */
+.field.readonly input { background:#f3f3f3; color:#444; }
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .grid-calendar { grid-template-columns: 1fr; }
+  .sidepanel { order: -1; }
+}
+@media (max-width: 640px) {
+  .grid2 { grid-template-columns: 1fr; }
+  .grid3 { grid-template-columns: 1fr; }
+  .table.calendar tbody td { height: 95px; }
+}
+
+
+/* =========================
+   MEJORA DE CONTRASTE - PANEL LATERAL CITAS
+   ========================= */
+.sidepanel,
+.sidepanel .panel-card {
+  color: #fff;
+  background: #222; /* Fondo oscuro del panel */
+}
+
+/* Etiquetas */
+.sidepanel .field label {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Campos de texto, select y textarea */
+.sidepanel input,
+.sidepanel select,
+.sidepanel textarea {
+  color: #fff;
+  background: #141414;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+}
+
+/* Placeholders visibles */
+.sidepanel input::placeholder,
+.sidepanel textarea::placeholder {
+  color: #bdbdbd;
+  opacity: 1;
+}
+
+/* Campos deshabilitados */
+.sidepanel input:disabled,
+.sidepanel select:disabled,
+.sidepanel textarea:disabled {
+  color: #d8d8d8;
+  background: #1b1b1b;
+  opacity: 1;
+}
+
+/* Icono del date/time visible en fondo oscuro */
+.sidepanel input[type="date"]::-webkit-calendar-picker-indicator,
+.sidepanel input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) opacity(0.8);
+}
+
+/* Opciones de los select (texto negro sobre fondo claro) */
+.sidepanel select option {
+  color: #000;
+  background: #fff;
+}
+
+/* Efecto al enfocar campos */
+.sidepanel input:focus,
+.sidepanel select:focus,
+.sidepanel textarea:focus {
+  outline: 2px solid #ffb800;
+  border-color: #ffb800;
+}
+
+/* Mejora general de contraste */
+.sidepanel { color-scheme: dark; }
+
+
+
+/* === Botón base amarillo para Cancelar/Volver en toda la app === */
+.btn:not(.btn-primary):not(.btn-secondary):not(.btn-danger):not(.btn-danger-outline) {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+.btn:not(.btn-primary):not(.btn-secondary):not(.btn-danger):not(.btn-danger-outline):hover {
+  filter: brightness(.95);
+}
+
+/* === Cerrar sesión en el topbar: forzar amarillo aunque use .btn-outline === */
+.topbar .btn-outline {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+
+/* === En el panel lateral de Citas, el botón Cancelar también amarillo === */
+.sidepanel .btn:not(.btn-primary) {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+
+/* ====== VER MÁS (amarillo) ====== */
+#ultimos .btn.btn-secondary {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+#ultimos .btn.btn-secondary:hover { filter: brightness(.95); }
+
+/* ====== FILTROS: etiquetas amarillas y campos con texto negro ====== */
+#historial .filters .field > label {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Texto negro dentro de inputs/selects de filtros */
+#historial .filters .field > input,
+#historial .filters .field > select {
+  background: #ffffff;
+  color: #111;                /* texto negro */
+  border: 1px solid #444;     /* borde más visible */
+}
+
+/* Placeholders visibles (gris oscuro) */
+#historial .filters .field > input::placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+/* Opciones del select con texto negro */
+#historial .filters .field > select option {
+  color: #111;
+  background: #fff;
+}
+
+/* Ícono del date en fondo claro (sin invertir) */
+#historial .filters input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: none;
+  opacity: .85;
+}
