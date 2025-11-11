@@ -30,12 +30,12 @@
 
 <nav class="tabs">
   <a href="index.jsp">Inicio</a>
-  <a>Registro de Pagos</a>
-  <a>Productos</a>
-  <a>Inventario</a>
   <a href="citas.jsp">Citas</a>
-  <a href="servicios.jsp">Servicios</a>
   <a href="clientes.jsp">Clientes</a>
+  <a href="inventario.jsp">Inventario</a>
+  <a>Productos</a>
+  <a>Registro de Pagos</a>
+  <a href="servicios.jsp">Servicios</a>
   <a class="active">Vehículos</a>
 </nav>
 
@@ -51,26 +51,31 @@
     <div class="datatable-wrapper">
       <table class="datatable">
         <colgroup>
-          <col style="width:20%"><col style="width:12%"><col style="width:14%">
-          <col style="width:12%"><col style="width:10%"><col style="width:12%"><col style="width:12%"><col style="width:8%">
+          <col style="width:14%"><col style="width:10%"><col style="width:10%">
+          <col style="width:10%"><col style="width:8%"><col style="width:10%">
+          <col style="width:10%"><col style="width:10%"><col style="width:10%">
+          <col style="width:8%"><col style="width:10%">
         </colgroup>
         <thead>
         <tr>
           <th>Cliente</th>
+          <th>DNI</th>
           <th>Marca</th>
           <th>Modelo</th>
           <th>Tipo</th>
           <th>Año</th>
           <th>Color</th>
+          <th>Combustible</th>
+          <th>N. Motor</th>
           <th>Placa</th>
           <th class="ta-center">Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <!-- MOCK últimos 4 -->
+        <!-- MOCK últimos 4 (con campos de BD) -->
         <tr data-id="1">
-          <td>Tyler Joseph</td><td>Kia</td><td>Rio</td><td><span class="tag">Sedán</span></td>
-          <td>2021</td><td>Rojo</td><td><strong class="money">C7L-394</strong></td>
+          <td>Tyler Joseph</td><td>74581236</td><td>Kia</td><td>Rio</td><td><span class="tag">Sedán</span></td>
+          <td>2021</td><td>Rojo</td><td>Gasolina</td><td>V-9879</td><td><strong class="money">C7L-394</strong></td>
           <td class="ta-center">
             <a class="chip" href="vehiculo-form.jsp?action=view&id=1">👁</a>
             <a class="chip" href="vehiculo-form.jsp?action=edit&id=1">✏</a>
@@ -78,8 +83,8 @@
           </td>
         </tr>
         <tr data-id="2">
-          <td>Luis Cáceres</td><td>Hyundai</td><td>Elantra</td><td><span class="tag">Sedán</span></td>
-          <td>2018</td><td>Plata</td><td><strong class="money">BDP-213</strong></td>
+          <td>Luis Cáceres</td><td>70832144</td><td>Hyundai</td><td>Elantra</td><td><span class="tag">Sedán</span></td>
+          <td>2018</td><td>Plata</td><td>Gasolina</td><td>X-1223</td><td><strong class="money">BDP-213</strong></td>
           <td class="ta-center">
             <a class="chip" href="vehiculo-form.jsp?action=view&id=2">👁</a>
             <a class="chip" href="vehiculo-form.jsp?action=edit&id=2">✏</a>
@@ -87,8 +92,8 @@
           </td>
         </tr>
         <tr data-id="3">
-          <td>Hernan Soto</td><td>Toyota</td><td>Hilux</td><td><span class="tag">Pick-up</span></td>
-          <td>2022</td><td>Blanco</td><td><strong class="money">DNW-407</strong></td>
+          <td>Hernan Soto</td><td>72659411</td><td>Toyota</td><td>Hilux</td><td><span class="tag">Pick-up</span></td>
+          <td>2022</td><td>Blanco</td><td>Diésel</td><td>Z-4401</td><td><strong class="money">DNW-407</strong></td>
           <td class="ta-center">
             <a class="chip" href="vehiculo-form.jsp?action=view&id=3">👁</a>
             <a class="chip" href="vehiculo-form.jsp?action=edit&id=3">✏</a>
@@ -96,8 +101,8 @@
           </td>
         </tr>
         <tr data-id="4">
-          <td>Ben Canela</td><td>Nissan</td><td>Sentra</td><td><span class="tag">Sedán</span></td>
-          <td>2016</td><td>Negro</td><td><strong class="money">FEX-489</strong></td>
+          <td>Ben Canela</td><td>75100233</td><td>Nissan</td><td>Sentra</td><td><span class="tag">Sedán</span></td>
+          <td>2016</td><td>Negro</td><td>Gasolina</td><td>Q-8800</td><td><strong class="money">FEX-489</strong></td>
           <td class="ta-center">
             <a class="chip" href="vehiculo-form.jsp?action=view&id=4">👁</a>
             <a class="chip" href="vehiculo-form.jsp?action=edit&id=4">✏</a>
@@ -141,8 +146,10 @@
       <table class="datatable" id="tablaHistorial" data-empty="No hay vehículos para el filtro.">
         <thead>
         <tr>
-          <th>Cliente</th><th>Marca</th><th>Modelo</th><th>Tipo</th>
-          <th>Año</th><th>Color</th><th>Placa</th><th class="ta-center">Acciones</th>
+          <th>Cliente</th><th>DNI</th><th>Marca</th><th>Modelo</th><th>Tipo</th>
+          <th>Año</th><th>Color</th><th>Combustible</th><th>Kilometraje</th>
+          <th>N. Motor</th><th>SOAT</th><th>Tarjeta Prop.</th><th>Placa</th>
+          <th class="ta-center">Acciones</th>
         </tr>
         </thead>
         <tbody id="bodyHistorial"></tbody>
@@ -155,42 +162,51 @@
 
 <script>
 // ------- MOCK DATA -------
+// Alineado a tu BD: agrega combustible, num_motor, kilometraje, soat, tarjeta_propietario, dni_usuario
 const vehiculos = [
-  {id:1, cliente:'Tyler Joseph',  marca:'Kia',     modelo:'Rio',     tipo:'Sedán',   anio:2021, color:'Rojo',   placa:'C7L-394', fecha:'2025-02-03'},
-  {id:2, cliente:'Luis Cáceres',  marca:'Hyundai', modelo:'Elantra', tipo:'Sedán',   anio:2018, color:'Plata',  placa:'BDP-213', fecha:'2025-01-27'},
-  {id:3, cliente:'Hernan Soto',   marca:'Toyota',  modelo:'Hilux',   tipo:'Pick-up', anio:2022, color:'Blanco', placa:'DNW-407', fecha:'2025-01-26'},
-  {id:4, cliente:'Ben Canela',    marca:'Nissan',  modelo:'Sentra',  tipo:'Sedán',   anio:2016, color:'Negro',  placa:'FEX-489', fecha:'2025-01-24'},
-  {id:5, cliente:'Claudia Rojas', marca:'Kia',     modelo:'Sportage',tipo:'SUV',     anio:2020, color:'Azul',   placa:'V4S-220', fecha:'2024-12-14'},
-  {id:6, cliente:'Diego Núñez',   marca:'Toyota',  modelo:'Yaris',   tipo:'Hatchback',anio:2019,color:'Gris',   placa:'CSS-101', fecha:'2024-11-09'}
+  {id:1, cliente:'Tyler Joseph',  dni_usuario:'74581236', marca:'Kia',     modelo:'Rio',      tipo:'Sedán',    anio:2021, color:'Rojo',   combustible:'Gasolina', num_motor:'V-9879', kilometraje:25400, soat:'Vigente',      tarjeta_propietario:'TP-001', placa:'C7L-394', fecha:'2025-02-03'},
+  {id:2, cliente:'Luis Cáceres',  dni_usuario:'70832144', marca:'Hyundai', modelo:'Elantra',  tipo:'Sedán',    anio:2018, color:'Plata',  combustible:'Gasolina', num_motor:'X-1223', kilometraje:61200, soat:'Vence 2025', tarjeta_propietario:'TP-002', placa:'BDP-213', fecha:'2025-01-27'},
+  {id:3, cliente:'Hernan Soto',   dni_usuario:'72659411', marca:'Toyota',  modelo:'Hilux',    tipo:'Pick-up',  anio:2022, color:'Blanco', combustible:'Diésel',  num_motor:'Z-4401', kilometraje:17800, soat:'Vigente',      tarjeta_propietario:'TP-003', placa:'DNW-407', fecha:'2025-01-26'},
+  {id:4, cliente:'Ben Canela',    dni_usuario:'75100233', marca:'Nissan',  modelo:'Sentra',   tipo:'Sedán',    anio:2016, color:'Negro',  combustible:'Gasolina', num_motor:'Q-8800', kilometraje:98000, soat:'Vencido',      tarjeta_propietario:'TP-004', placa:'FEX-489', fecha:'2025-01-24'},
+  {id:5, cliente:'Claudia Rojas', dni_usuario:'70445522', marca:'Kia',     modelo:'Sportage', tipo:'SUV',      anio:2020, color:'Azul',   combustible:'GNV',      num_motor:'M-2233', kilometraje:40120, soat:'Vigente',      tarjeta_propietario:'TP-005', placa:'V4S-220', fecha:'2024-12-14'},
+  {id:6, cliente:'Diego Núñez',   dni_usuario:'73211009', marca:'Toyota',  modelo:'Yaris',    tipo:'Hatchback',anio:2019, color:'Gris',   combustible:'GLP',      num_motor:'K-7711', kilometraje:51200, soat:'Vigente',      tarjeta_propietario:'TP-006', placa:'CSS-101', fecha:'2024-11-09'}
 ];
 
 function render(rows){
   const tbody = document.getElementById('bodyHistorial');
   tbody.innerHTML = '';
-  rows.forEach(r=>{
+  rows.forEach(function(r){
     const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${r.cliente}</td>
-      <td>${r.marca}</td>
-      <td>${r.modelo}</td>
-      <td><span class="tag">${r.tipo}</span></td>
-      <td>${r.anio}</td>
-      <td>${r.color}</td>
-      <td><strong class="money">${r.placa}</strong></td>
-      <td class="ta-center">
-        <a class="chip" href="vehiculo-form.jsp?action=view&id=${r.id}">👁</a>
-        <a class="chip" href="vehiculo-form.jsp?action=edit&id=${r.id}">✏</a>
-        <button class="chip danger" onclick="fakeDelete(this)">🗑</button>
-      </td>`;
+    tr.innerHTML =
+      '  <td>' + r.cliente + '</td>' +
+      '  <td>' + (r.dni_usuario || '') + '</td>' +
+      '  <td>' + r.marca + '</td>' +
+      '  <td>' + r.modelo + '</td>' +
+      '  <td><span class="tag">' + r.tipo + '</span></td>' +
+      '  <td>' + r.anio + '</td>' +
+      '  <td>' + r.color + '</td>' +
+      '  <td>' + (r.combustible || '') + '</td>' +
+      '  <td>' + (r.kilometraje != null ? r.kilometraje : '') + '</td>' +
+      '  <td>' + (r.num_motor || '') + '</td>' +
+      '  <td>' + (r.soat || '') + '</td>' +
+      '  <td>' + (r.tarjeta_propietario || '') + '</td>' +
+      '  <td><strong class="money">' + r.placa + '</strong></td>' +
+      '  <td class="ta-center">' +
+      '    <a class="chip" href="vehiculo-form.jsp?action=view&id=' + r.id + '">👁</a>' +
+      '    <a class="chip" href="vehiculo-form.jsp?action=edit&id=' + r.id + '">✏</a>' +
+      '    <button class="chip danger" onclick="fakeDelete(this)">🗑</button>' +
+      '  </td>';
     tbody.appendChild(tr);
   });
-  if(rows.length===0){
-    const tr=document.createElement('tr');
-    tr.innerHTML = '<td colspan="8" class="empty">' + document.getElementById('tablaHistorial').dataset.empty + '</td>';
+
+  if(rows.length === 0){
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td colspan="14" class="empty">' +
+      document.getElementById('tablaHistorial').dataset.empty +
+      '</td>';
     tbody.appendChild(tr);
   }
 }
-
 function applyFilter(){
   const qCli = document.getElementById('fCliente').value.toLowerCase().trim();
   const qPlaca = document.getElementById('fPlaca').value.toLowerCase().trim();
@@ -221,5 +237,6 @@ document.getElementById('btnAplicar').addEventListener('click', applyFilter);
 document.getElementById('btnLimpiar').addEventListener('click', clearFilter);
 render(vehiculos);
 </script>
+
 </body>
 </html>

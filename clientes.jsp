@@ -16,7 +16,6 @@
   <link rel="stylesheet"
       href="${pageContext.request.contextPath}/css/estiloM.css?v=<%=System.currentTimeMillis()%>">
 
-  
 </head>
 <body class="bg">
 
@@ -34,12 +33,12 @@
 <!-- NAV -->
 <nav class="tabs">
   <a href="index.jsp">Inicio</a>
-  <a>Registro de Pagos</a>
-  <a>Productos</a>
-  <a>Inventario</a>
   <a href="citas.jsp">Citas</a>
-  <a href="servicios.jsp">Servicios</a>
   <a class="active">Clientes</a>
+  <a href="inventario.jsp">Inventario</a>
+  <a>Productos</a>
+  <a>Registro de Pagos</a>
+  <a href="servicios.jsp">Servicios</a>
   <a href="vehiculos.jsp">Vehículos</a>
 </nav>
 

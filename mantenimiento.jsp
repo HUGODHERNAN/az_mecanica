@@ -22,8 +22,7 @@
 <header class="topbar">
     <div class="container topbar__inner">
         <a class="brand" href="${pageContext.request.contextPath}/index.jsp" aria-label="Inicio">
-            <!-- Reemplaza por tu logo -->
-            <img src="${pageContext.request.contextPath}/public_html/imagenes/logo-az.png" alt="Logo AZ" class="brand__img">
+            <img src="${pageContext.request.contextPath}/imgs/logo.png" alt="Logo AZ" class="brand__img">
         </a>
 
         <a href="tel:+51973608798" class="phone-badge">Llámanos: 973 608 798</a>
@@ -47,9 +46,9 @@
 <!-- ====== HERO/GALERÍA ====== -->
 <section class="gallery container">
     <!-- Insertar tus imágenes -->
-    <img src="${pageContext.request.contextPath}/public_html/imagenes/mant-1.jpg" alt="Volante vehículo" class="gallery__img">
-    <img src="${pageContext.request.contextPath}/public_html/imagenes/mant-2.jpg" alt="Panel vehículo" class="gallery__img">
-    <img src="${pageContext.request.contextPath}/public_html/imagenes/mant-3.jpg" alt="Escáner automotriz" class="gallery__img">
+    <img src="${pageContext.request.contextPath}/imgs/imgcar1.jpg" alt="Volante vehículo" class="gallery__img">
+    <img src="${pageContext.request.contextPath}/imgs/imgcar2.jpg" alt="Panel vehículo" class="gallery__img">
+    <img src="${pageContext.request.contextPath}/imgs/imgcar10.jpg" alt="Escáner automotriz" class="gallery__img">
 </section>
 
 <!-- ====== CUERPO PRINCIPAL ====== -->

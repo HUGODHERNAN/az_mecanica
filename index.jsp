@@ -61,10 +61,12 @@
   <nav class="nav nav--admin">
     <div class="container nav__list">
       <span class="nav__link nav__label">Panel Admin</span>
-      <a href="${pageContext.request.contextPath}/clientes.jsp" class="nav__link">Clientes</a>
-      <a href="${pageContext.request.contextPath}/vehiculos.jsp" class="nav__link">Vehículos</a>
-      <a href="${pageContext.request.contextPath}/servicios.jsp" class="nav__link">Servicios</a>
       <a href="${pageContext.request.contextPath}/citas.jsp" class="nav__link">Citas</a>
+      <a href="${pageContext.request.contextPath}/clientes.jsp" class="nav__link">Clientes</a>
+      <a href="${pageContext.request.contextPath}/inventario.jsp" class="nav__link">Inventario</a>
+      <a href="${pageContext.request.contextPath}/servicios.jsp" class="nav__link">Servicios</a>
+      <a href="${pageContext.request.contextPath}/vehiculos.jsp" class="nav__link">Vehículos</a>
+
       
     </div>
   </nav>
@@ -155,7 +157,7 @@
           asesoramiento para compra de vehículos con inspección técnica previa.
         </p>
 
-        <img src="${pageContext.request.contextPath}/public_html/imagenes/logo-az-mini.png" alt="AZ" style="height:56px; margin-top:.6rem;">
+        <img src="${pageContext.request.contextPath}/imgs/imgcar12.jpg" alt="AZ" style="height:56px; margin-top:.6rem;">
       </article>
     </section>
 
